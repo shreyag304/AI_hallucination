@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Firebase Auth Test</title>
+</head>
+
+<body>
+    <h1>Firebase Authentication Test</h1>
+    <button id="signInBtn">Sign in with Google</button>
+    <div id="status"></div>
+    <div id="userInfo"></div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getAuth, GoogleAuthProvider, signInWithPopup } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyD9R1vF0Xbec7ikS4RRuuLyMI9RXWeFI6E",
+            authDomain: "semanticmemorysystem-9bf21.firebaseapp.com",
+            projectId: "semanticmemorysystem-9bf21",
+            storageBucket: "semanticmemorysystem-9bf21.firebasestorage.app",
+            messagingSenderId: "593430630902",
+            appId: "1:593430630902:web:c35787591beb994c00f7d7"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+
+        document.getElementById('signInBtn').addEventListener('click', async () => {
+            const status = document.getElementById('status');
+            const userInfo = document.getElementById('userInfo');
+
+            status.textContent = 'Attempting sign-in...';
+            status.style.color = 'blue';
+
+            try {
+                const result = await signInWithPopup(auth, provider);
+                status.textContent = 'SUCCESS! Signed in.';
+                status.style.color = 'green';
+                userInfo.innerHTML = `
+                    <h2>User Info:</h2>
+                    <p>Email: ${result.user.email}</p>
+                    <p>Display Name: ${result.user.displayName}</p>
+                    <p>UID: ${result.user.uid}</p>
+                `;
+            } catch (error) {
+                status.textContent = `FAILED: ${error.code}`;
+                status.style.color = 'red';
+                userInfo.innerHTML = `
+                    <h2>Error Details:</h2>
+                    <pre>${JSON.stringify(error, null, 2)}</pre>
+                `;
+                console.error('Full error:', error);
+            }
+        });
+    </script>
+</body>
+
+</html>

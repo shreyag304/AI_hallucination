@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Memory collection - read access for all, write only via Cloud Functions
+    // Secure per-user memory paths
+    match /users/{userId}/memory/current {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if false; // Only backend service account can write
+    }
+
+    // Legacy path cleanup (disallow access)
+    match /memory/{docId} {
+      allow read, write: if false;
+    }
+  }
+}

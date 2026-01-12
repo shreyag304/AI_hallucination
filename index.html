@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura - AI Memory Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Landing Page -->
+    <div id="landingPage" class="landing-page">
+        <div class="landing-content">
+            <h1 class="landing-title">Aura</h1>
+            <p class="landing-subtitle">The Intelligence That Remembers Your World</p>
+
+            <div class="features">
+                <div class="feature-card">
+                    <span class="feature-icon">🧠</span>
+                    <h3>Singular Focus</h3>
+                    <p>One evolving summary of your unique perspective, always in context.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🛡️</span>
+                    <h3>Silent Memory</h3>
+                    <p>Your intent is managed invisibly. No clutter, no history, just insight.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">✨</span>
+                    <h3>Session-Pure</h3>
+                    <p>A fresh workspace every time you log in, while the logic persists.</p>
+                </div>
+            </div>
+
+            <button id="loginBtn" class="login-btn">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Logo"
+                    class="google-logo">
+                Sign in with Google
+            </button>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="appContainer" class="app-container" style="display: none;">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="app-title">Aura</h1>
+            <button id="logoutBtn" class="logout-btn">Sign Out</button>
+        </div>
+
+        <!-- Chat Log -->
+        <div id="chatLog" class="chat-log">
+            <div class="system-message">Select a thought and let Aura integrate it.</div>
+        </div>
+
+        <!-- Input Area (Sticky / Fixed Bottom) -->
+        <div class="input-area">
+            <div class="input-container">
+                <textarea id="userInput" placeholder="Type your thought or belief..." rows="1"></textarea>
+                <button id="submitBtn" class="submit-btn">
+                    <span class="btn-text">Send</span>
+                    <span class="loader" style="display: none;">●●●</span>
+                </button>
+            </div>
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
