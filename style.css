@@ -23,7 +23,6 @@ body {
     overflow: hidden;
 }
 
-/* Landing Page */
 .landing-page {
     display: flex;
     align-items: center;
@@ -121,7 +120,6 @@ body {
     height: 20px;
 }
 
-/* App Container */
 .app-container {
     display: flex;
     flex-direction: column;
@@ -192,7 +190,6 @@ body {
     animation: slideIn 0.3s ease-out;
 }
 
-/* Better typography for AI responses */
 .ai-message p {
     margin: 0 0 1rem 0;
     line-height: 1.7;
@@ -202,7 +199,6 @@ body {
     margin-bottom: 0;
 }
 
-/* Code blocks in AI messages */
 .ai-message code {
     background: rgba(0, 0, 0, 0.3);
     padding: 0.2rem 0.4rem;
@@ -228,7 +224,6 @@ body {
     line-height: 1.5;
 }
 
-/* Lists in AI messages */
 .ai-message ul,
 .ai-message ol {
     margin: 1rem 0;
@@ -240,7 +235,6 @@ body {
     margin: 0.5rem 0;
 }
 
-/* Headings in AI messages */
 .ai-message h1,
 .ai-message h2,
 .ai-message h3 {
@@ -267,7 +261,6 @@ body {
     font-size: 1.1em;
 }
 
-/* Slide-in animation */
 @keyframes slideIn {
     from {
         opacity: 0;
@@ -288,7 +281,6 @@ body {
     margin: 1rem 0;
 }
 
-/* Input Area (Sticky / Fixed Bottom) */
 .input-area {
     padding: 2rem;
     background: linear-gradient(transparent, var(--background) 20%);
@@ -364,7 +356,6 @@ textarea::placeholder {
     text-align: center;
 }
 
-/* Scrollbar Styling */
 ::-webkit-scrollbar {
     width: 8px;
 }
