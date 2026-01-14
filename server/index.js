@@ -16,17 +16,25 @@ const fs = require('fs');
 const path = require('path');
 const serviceAccountPath = path.join(__dirname, 'serviceAccountKey.json');
 
-if (fs.existsSync(serviceAccountPath)) {
+// Check if running on Render (environment variable exists)
+if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+    const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+    admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+        projectId: 'semanticmemorysystem-9bf21'
+    });
+    console.log('Firebase Admin initialized with environment variable credentials.');
+} else if (fs.existsSync(serviceAccountPath)) {
     admin.initializeApp({
         credential: admin.credential.cert(require(serviceAccountPath)),
         projectId: 'semanticmemorysystem-9bf21'
     });
-    console.log('Firebase Admin initialized with service account.');
+    console.log('Firebase Admin initialized with service account file.');
 } else {
     admin.initializeApp({
         projectId: 'semanticmemorysystem-9bf21'
     });
-    console.warn('Warning: No serviceAccountKey.json found. Firestore might fail locally.');
+    console.warn('Warning: No Firebase credentials found. Firestore will fail.');
 }
 
 const db = admin.firestore();
