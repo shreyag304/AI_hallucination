@@ -6,7 +6,7 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 const app = express();
 app.use(cors({
-    origin: ['https://ai-hallucination.vercel.app', 'http://localhost:5000'],
+    origin: ['https://ai-hallucination-nrkv.vercel.app', 'http://localhost:5000'],
     credentials: true
 }));
 app.use(express.json());
