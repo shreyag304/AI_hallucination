@@ -5,7 +5,10 @@ const admin = require('firebase-admin');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: ['https://ai-hallucination.vercel.app', 'http://localhost:5000'],
+    credentials: true
+}));
 app.use(express.json());
 
 // Initialize Firebase Admin

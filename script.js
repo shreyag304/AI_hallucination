@@ -106,7 +106,7 @@ submitBtn.addEventListener('click', async () => {
     userInput.style.height = 'auto';
 
     try {
-        const response = await fetch('http://localhost:3001/update-memory', {
+        const response = await fetch('https://aura-backend-pidm.onrender.com/update-memory', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
