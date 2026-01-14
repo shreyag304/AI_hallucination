@@ -1,7 +1,7 @@
 {
-  "name": "server",
+  "name": "aura-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Aura AI Backend with Hierarchical Memory",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
