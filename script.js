@@ -29,19 +29,57 @@ const errorMessage = document.getElementById('errorMessage');
 const btnText = submitBtn.querySelector('.btn-text');
 const loader = submitBtn.querySelector('.loader');
 
-// Skip authentication - show app directly
-landingPage.style.display = 'none';
-appContainer.style.display = 'flex';
-console.log('App loaded without authentication');
+// Get Started button elements
+const getStartedNav = document.getElementById('getStartedNav');
+const heroGetStarted = document.getElementById('heroGetStarted');
 
-// Auth handlers (disabled for now)
-loginBtn.addEventListener('click', async () => {
-    alert('Authentication is currently disabled. The app works without sign-in.');
-});
+// Initialize: Show landing page, hide chat
+landingPage.style.display = 'block';
+appContainer.style.display = 'none';
 
-logoutBtn.addEventListener('click', async () => {
-    alert('No user is signed in.');
-});
+// Function to navigate to AI chat
+function navigateToChat() {
+    landingPage.style.display = 'none';
+    appContainer.style.display = 'flex';
+    // Update navbar button to "Back to Home"
+    if (getStartedNav) {
+        getStartedNav.textContent = 'Back to Home';
+    }
+    console.log('Navigated to AI chat interface');
+}
+
+// Function to navigate back to landing page
+function navigateToHome() {
+    landingPage.style.display = 'block';
+    appContainer.style.display = 'none';
+    // Update navbar button to "Get Started"
+    if (getStartedNav) {
+        getStartedNav.textContent = 'Get Started';
+    }
+    chatLog.innerHTML = '<div class="system-message">Select a thought and let Aura integrate it.</div>';
+    console.log('Navigated back to landing page');
+}
+
+// Navbar button handler - toggles between pages
+if (getStartedNav) {
+    getStartedNav.addEventListener('click', () => {
+        if (landingPage.style.display === 'none') {
+            // Currently on chat page, go back to home
+            navigateToHome();
+        } else {
+            // Currently on landing page, go to chat
+            navigateToChat();
+        }
+    });
+}
+
+// Hero Get Started button - only navigates to chat
+if (heroGetStarted) {
+    heroGetStarted.addEventListener('click', navigateToChat);
+}
+
+// Logout button - navigate back to landing page
+logoutBtn.addEventListener('click', navigateToHome);
 
 // Auto-expand textarea
 userInput.addEventListener('input', () => {

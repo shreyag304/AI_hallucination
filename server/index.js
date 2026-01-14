@@ -29,7 +29,7 @@ if (fs.existsSync(serviceAccountPath)) {
 const db = admin.firestore();
 
 // Initialize Gemini
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || 'YOUR_API_KEY_HERE');
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 app.post('/update-memory', async (req, res) => {
     try {
