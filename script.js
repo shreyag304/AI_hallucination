@@ -106,6 +106,7 @@ submitBtn.addEventListener('click', async () => {
     userInput.style.height = 'auto';
 
     try {
+        // Call Render backend API
         const response = await fetch('https://aura-backend-gidm.onrender.com/update-memory', {
             method: 'POST',
             headers: {
