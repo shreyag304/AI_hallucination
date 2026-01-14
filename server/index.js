@@ -34,6 +34,20 @@ const db = admin.firestore();
 // Initialize Gemini
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
+// Health check endpoint
+app.get('/', (req, res) => {
+    res.json({
+        status: 'ok',
+        message: 'Aura Backend API is running',
+        endpoints: ['/update-memory']
+    });
+});
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+    res.json({ status: 'healthy', timestamp: new Date().toISOString() });
+});
+
 app.post('/update-memory', async (req, res) => {
     try {
         const { userInput } = req.body;
